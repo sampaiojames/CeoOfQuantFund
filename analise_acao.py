@@ -43,8 +43,8 @@ class AnaliseAcao:
             raise ValueError("Dados não tratados ainda. Use tratar_dados() primeiro.")
         print("Executando backtest com estratégia simples (Golden Cross)...")
         close = self.dados_tratados['Close']
-        fast_ma = close.rolling(window=20).mean()
-        slow_ma = close.rolling(window=50).mean()
+        fast_ma = close.rolling(window=9).mean()
+        slow_ma = close.rolling(window=21).mean()
         entries = fast_ma > slow_ma
         exits = fast_ma < slow_ma
         pf = vbt.Portfolio.from_signals(
